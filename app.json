@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "GoalsApp",
+    "slug": "GoalsApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "GoalsApp"
+}
