@@ -6,9 +6,9 @@ function GoalInput(props) {
       <TextInput
         placeholder="Your Goal"
         style={styles.textInput}
-        onChangeText={props.goalInputHandler}
+        onChangeText={props.onChangeTextHandler}
       />
-      <Button title="Add Goal" onPress={props.addGoalHandler} />
+      <Button title="Add Goal" onPress={props.onPressHandler} />
     </View>
   )
 }

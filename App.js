@@ -22,8 +22,8 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <GoalInput
-        goalInputHandler={goalInputHandler}
-        addGoalHandler={addGoalHandler}
+        onChangeTextHandler={goalInputHandler}
+        onPressHandler={addGoalHandler}
       />
       <View style={styles.goalsContainer}>
         <FlatList
