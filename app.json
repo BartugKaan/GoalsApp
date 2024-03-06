@@ -3,9 +3,8 @@
     "name": "GoalsApp",
     "slug": "GoalsApp",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "backgroundColor": "#1e085a"
   },
   "name": "GoalsApp"
 }
