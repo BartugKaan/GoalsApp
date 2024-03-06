@@ -27,7 +27,7 @@ export default function App() {
   function deleteGoalHandler(id) {
     setGoals((currentGoals) => {
       return currentGoals.filter((goal) => {
-        goal.id !== id
+        return goal.id !== id
       })
     })
   }
