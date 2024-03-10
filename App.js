@@ -7,6 +7,7 @@ import GoalInput from './components/GoalInput'
 
 export default function App() {
   const [goals, setGoals] = useState([])
+  const [completedGoals, setCompletedGoals] = useState([])
   const [modalIsVisible, setModalIsVisible] = useState(false)
 
   function startAddGoalHandler() {
@@ -25,9 +26,24 @@ export default function App() {
     setModalIsVisible(false)
   }
 
-  function deleteGoalHandler(id) {
+  function completeGoalHandler(id) {
     setGoals((currentGoals) => {
       return currentGoals.filter((goal) => {
+        return goal.id !== id
+      })
+    })
+
+    const goalIndex = goals.findIndex((goal) => goal.id === id)
+    const goal = goals[goalIndex]
+    setCompletedGoals((currentCompletedGoals) => [
+      ...currentCompletedGoals,
+      goal,
+    ])
+  }
+
+  function deleteGoalHandler(id) {
+    setCompletedGoals((currentCompletedGoals) => {
+      return currentCompletedGoals.filter((goal) => {
         return goal.id !== id
       })
     })
@@ -48,9 +64,29 @@ export default function App() {
           visible={modalIsVisible}
         />
         <View style={styles.goalsContainer}>
-          <Text style={styles.goalListTitle}>Goals</Text>
+          <Text style={styles.goalListTitle}>Goals : {goals.length}</Text>
           <FlatList
             data={goals}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  onDeleteItem={completeGoalHandler}
+                  id={itemData.item.id}
+                />
+              )
+            }}
+            keyExtractor={(item, index) => {
+              return item.id
+            }}
+          />
+        </View>
+        <View style={styles.completedGoalsContainer}>
+          <Text style={styles.goalListTitle}>
+            Completed Goals : {completedGoals.length}
+          </Text>
+          <FlatList
+            data={completedGoals}
             renderItem={(itemData) => {
               return (
                 <GoalItem
@@ -77,7 +113,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   goalsContainer: {
-    flex: 5,
+    flex: 3,
+  },
+  completedGoalsContainer: {
+    flex: 2,
   },
   goalListTitle: {
     fontSize: 24,
