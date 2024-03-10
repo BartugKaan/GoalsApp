@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StyleSheet, View, FlatList, Button } from 'react-native'
+import { StyleSheet, View, FlatList, Button, Text } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 
 import GoalItem from './components/GoalItem'
@@ -48,6 +48,7 @@ export default function App() {
           visible={modalIsVisible}
         />
         <View style={styles.goalsContainer}>
+          <Text style={styles.goalListTitle}>Goals</Text>
           <FlatList
             data={goals}
             renderItem={(itemData) => {
@@ -77,5 +78,10 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 5,
+  },
+  goalListTitle: {
+    fontSize: 24,
+    paddingHorizontal: 16,
+    color: '#e4d0ff',
   },
 })
