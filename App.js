@@ -49,6 +49,10 @@ export default function App() {
     })
   }
 
+  function clearCompletedGoals() {
+    setCompletedGoals([])
+  }
+
   return (
     <>
       <StatusBar style="light" />
@@ -82,9 +86,16 @@ export default function App() {
           />
         </View>
         <View style={styles.completedGoalsContainer}>
-          <Text style={styles.goalListTitle}>
-            Completed Goals : {completedGoals.length}
-          </Text>
+          <View style={styles.containerHeader}>
+            <Text style={styles.goalListTitle}>
+              Completed Goals : {completedGoals.length}
+            </Text>
+            <Button
+              title="Clear All"
+              color={'#a065ec'}
+              onPress={clearCompletedGoals}
+            />
+          </View>
           <FlatList
             data={completedGoals}
             renderItem={(itemData) => {
@@ -122,5 +133,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     paddingHorizontal: 16,
     color: '#e4d0ff',
+  },
+  containerHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 })
